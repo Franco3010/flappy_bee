@@ -220,6 +220,7 @@ const init = async () => {
   let accuTree = 0;
   let accumulate2 = 0;
   let accuPipe = 0;
+  let accumulateScore = 0
 
   const mole_SIZE = 10;
 
