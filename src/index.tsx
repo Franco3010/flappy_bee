@@ -346,21 +346,21 @@ const init = async () => {
     //   }
     // }
 
-    // for (let ground of grounds) {
-    //   indexGround = grounds.indexOf(ground);
-    //   lastIndexGround = grounds.length - 1;
-    //   if (accuTree > 0.3 && stop == 0) {
-    //     accuTree = 0;
+    for (let ground of grounds) {
+      indexGround = grounds.indexOf(ground);
+      lastIndexGround = grounds.length - 1;
+      if (accuTree > 0.3 && stop == 0) {
+        accuTree = 0;
 
-    //     grounds.push({
-    //       x: grounds[lastIndexGround].x + 10,
-    //       y: 90
-    //     });
-    //   }
-    //   if (ground.x < -10) {
-    //     grounds.splice(indexGround, 1);
-    //   }
-    // }
+        grounds.push({
+          x: grounds[lastIndexGround].x + 10,
+          y: 90
+        });
+      }
+      if (ground.x < -10) {
+        grounds.splice(indexGround, 1);
+      }
+    }
 
     gl.clear(gl.COLOR_BUFFER_BIT);
     batch.setProjection(camera.combined);
@@ -506,12 +506,12 @@ const init = async () => {
       }
     }
 
-    // for (let ground of grounds) {
-    //   batch.draw(groundsImg, ground.x, ground.y, 10, 10);
-    //   if (stop == 0) {
-    //     ground.x = ground.x - 0.5;
-    //   }
-    // }
+    for (let ground of grounds) {
+      batch.draw(groundsImg, ground.x, ground.y, 10, 10);
+      if (stop == 0) {
+        ground.x = ground.x - 0.5;
+      }
+    }
     if (stop == 0) {
       roatateTime += delta;
       rotateAngle = rotateAngle + 0.2 * roatateTime;
