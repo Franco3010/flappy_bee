@@ -40,6 +40,8 @@ let indexBee2;
 let Time_gia_toc = 0;
 let rotateAngle = 7;
 let roatateTime = 0;
+let lastIndexGround;
+let lastIndexWire;
 
 const init = async () => {
   // const stage = createStage();
@@ -78,7 +80,7 @@ const init = async () => {
   const number8 = await loadTexture(gl, './8.png');
   const number9 = await loadTexture(gl, './9.png');
   const number0 = await loadTexture(gl, './0.png');
-
+  const square = await loadTexture(gl, './square.png');
   const bikeImg = await loadTexture(gl, './bike.png');
   const bike2Img = await loadTexture(gl, './bike2.png');
 
@@ -303,12 +305,13 @@ const init = async () => {
 
     for (let wire of wires) {
       indexWire = wires.indexOf(wire);
+      lastIndexWire = wires.length - 1;
 
       if (accumulate1 > 4 && stop == 0) {
         accumulate1 = 0;
 
         wires.push({
-          x: 50,
+          x: wires[lastIndexWire].x + 25,
           y: 65
         });
       }
@@ -319,12 +322,12 @@ const init = async () => {
 
     for (let ground of grounds) {
       indexGround = grounds.indexOf(ground);
-
+      lastIndexGround = grounds.length - 1;
       if (accuTree > 0.3 && stop == 0) {
         accuTree = 0;
 
         grounds.push({
-          x: 49,
+          x: grounds[lastIndexGround].x + 10,
           y: 90
         });
       }
@@ -367,7 +370,7 @@ const init = async () => {
 
     for (let bee of bees01) {
       indexBee = bees01.indexOf(bee);
-      batch.draw(bee1Img, bee.x, bee.y, 20, 10);
+      batch.draw(bee1Img, bee.x, bee.y, 15, 8.55);
 
       if (bee.powerup < 0.4 && stop == 0) {
         bee.x = bee.x - 0.2;
@@ -383,7 +386,7 @@ const init = async () => {
 
     for (let bee of bees02) {
       indexBee2 = bees02.indexOf(bee);
-      batch.draw(bee2Img, bee.x, bee.y, 5, 5);
+      batch.draw(bee2Img, bee.x, bee.y, 9, 7.7);
 
       if (bee.powerup < 0.2 && stop == 0) {
         bee.x = bee.x - 0.2;
@@ -491,20 +494,22 @@ const init = async () => {
         ground.x = ground.x - 0.5;
       }
     }
+    if (stop == 0) {
+      roatateTime += delta;
+      rotateAngle = rotateAngle + 0.2 * roatateTime;
+    }
 
-    roatateTime += delta;
-    rotateAngle = rotateAngle + 0.2 * roatateTime;
     if (roatateTime >= 1.5) {
       roatateTime = 0;
     }
     if (stop == 0) {
       runAnimation
         .getKeyFrame(stateTime, PlayMode.LOOP)
-        .draw(batch, bird.x, bird.y, 5, 4, 2, 1.5, (rotateAngle * Math.PI) / 4);
+        .draw(batch, bird.x, bird.y, 5, 4, 2.5, 2, (rotateAngle * Math.PI) / 4);
     } else {
       runAnimation1
         .getKeyFrame(stateTime, PlayMode.LOOP)
-        .draw(batch, bird.x, bird.y, 5, 5);
+        .draw(batch, bird.x, bird.y, 5, 4, 2.5, 2, (rotateAngle * Math.PI) / 4);
     }
     if (rotateAngle >= 10) {
       rotateAngle = 10;
@@ -527,7 +532,7 @@ const init = async () => {
     indexMemo = 1;
 
     // batch.draw(scoreImg, 2, 0, 10, 10)
-
+    // batch.draw(square, 20, 20, 10, 10, 7, 10, Math.PI / 2);
     batch.setColor(0.4, 0.4, 0.4, 1);
 
     batch.setColor(1, 1, 1, 1);
