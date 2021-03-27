@@ -14,6 +14,7 @@ import {
   Vector2
 } from 'gdxjs';
 import { time } from 'console';
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 // // WebGL
 const stage = createStage();
@@ -42,6 +43,8 @@ let rotateAngle = 7;
 let roatateTime = 0;
 let lastIndexGround;
 let lastIndexWire;
+let lastIndexBee01;
+let lastIndexBee02;
 
 const init = async () => {
   // const stage = createStage();
@@ -80,6 +83,7 @@ const init = async () => {
   const number8 = await loadTexture(gl, './8.png');
   const number9 = await loadTexture(gl, './9.png');
   const number0 = await loadTexture(gl, './0.png');
+  const square = await loadTexture(gl, './square.png');
   const bikeImg = await loadTexture(gl, './bike.png');
   const bike2Img = await loadTexture(gl, './bike2.png');
 
@@ -221,6 +225,7 @@ const init = async () => {
   let accuTree = 0;
   let accumulate2 = 0;
   let accuPipe = 0;
+  let accumulateBee2 = 0;
 
   const mole_SIZE = 10;
 
@@ -263,6 +268,8 @@ const init = async () => {
     accumulate2 += delta;
     accuPipe += delta;
     accuTree += delta;
+    accumulateBee2 += delta;
+
     if (accuPipe > 1.5 && stop == 0) {
       accuPipe = 0;
 
@@ -288,20 +295,40 @@ const init = async () => {
       });
     }
 
-    if (accumulate > 2 && stop == 0) {
-      accumulate = 0;
-      bees01.push({
-        x: 50,
-        y: Math.floor(Math.random() * (50 - 30 + 1)) + 30,
-        powerup: Math.random()
-      });
-      bees02.push({
-        x: 70,
-        y: Math.floor(Math.random() * (60 - 20 + 1)) + 20,
-        powerup: Math.random()
-      });
-    }
+    for (let bee of bees01) {
+      indexBee = bees01.indexOf(bee);
+      lastIndexBee01 = bees01.length - 1;
 
+      if (accumulate > 2 && stop == 0) {
+        accumulate = 0;
+
+        bees01.push({
+          x: 50,
+          y: Math.floor(Math.random() * (50 - 30 + 1)) + 30,
+          powerup: Math.random()
+        });
+      }
+      if (bee.x < -15) {
+        bees01.splice(indexBee, 1);
+      }
+    }
+    for (let bee of bees02) {
+      indexBee2 = bees02.indexOf(bee);
+      lastIndexBee02 = bees02.length - 1;
+
+      if (accumulateBee2 > 2 && stop == 0) {
+        accumulateBee2 = 0;
+
+        bees02.push({
+          x: 50,
+          y: Math.floor(Math.random() * (60 - 20 + 1)) + 20,
+          powerup: Math.random()
+        });
+      }
+      if (bee.x < -9) {
+        bees02.splice(indexBee2, 1);
+      }
+    }
     for (let wire of wires) {
       indexWire = wires.indexOf(wire);
       lastIndexWire = wires.length - 1;
@@ -368,7 +395,6 @@ const init = async () => {
     }
 
     for (let bee of bees01) {
-      indexBee = bees01.indexOf(bee);
       batch.draw(bee1Img, bee.x, bee.y, 15, 8.55);
 
       if (bee.powerup < 0.4 && stop == 0) {
@@ -378,13 +404,9 @@ const init = async () => {
           bee.x = bee.x - 0.5;
         }
       }
-      if (bee.x < -200) {
-        bees01.splice(indexBee, 1);
-      }
     }
 
     for (let bee of bees02) {
-      indexBee2 = bees02.indexOf(bee);
       batch.draw(bee2Img, bee.x, bee.y, 9, 7.7);
 
       if (bee.powerup < 0.2 && stop == 0) {
@@ -393,9 +415,6 @@ const init = async () => {
         if (stop == 0) {
           bee.x = bee.x - 0.8;
         }
-      }
-      if (bee.x < -350) {
-        bees02.splice(indexBee2, 1);
       }
     }
 
@@ -531,6 +550,7 @@ const init = async () => {
     indexMemo = 1;
 
     // batch.draw(scoreImg, 2, 0, 10, 10)
+    // batch.draw(square, 20, 20, 10, 10, 7, 10, Math.PI / 2);
     batch.setColor(0.4, 0.4, 0.4, 1);
 
     batch.setColor(1, 1, 1, 1);
