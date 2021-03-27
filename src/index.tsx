@@ -80,7 +80,6 @@ const init = async () => {
   const number8 = await loadTexture(gl, './8.png');
   const number9 = await loadTexture(gl, './9.png');
   const number0 = await loadTexture(gl, './0.png');
-  const square = await loadTexture(gl, './square.png');
   const bikeImg = await loadTexture(gl, './bike.png');
   const bike2Img = await loadTexture(gl, './bike2.png');
 
@@ -532,7 +531,6 @@ const init = async () => {
     indexMemo = 1;
 
     // batch.draw(scoreImg, 2, 0, 10, 10)
-    // batch.draw(square, 20, 20, 10, 10, 7, 10, Math.PI / 2);
     batch.setColor(0.4, 0.4, 0.4, 1);
 
     batch.setColor(1, 1, 1, 1);
