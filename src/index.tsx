@@ -279,21 +279,21 @@ const init = async () => {
         y: Math.floor(Math.random() * (80 - 30 + 1)) + 30
       });
     }
-    if (accumulate2 > 3 && stop == 0) {
-      accumulate2 = 0;
+    // if (accumulate2 > 3 && stop == 0) {
+    //   accumulate2 = 0;
 
-      bikes1.push({
-        x: 25,
-        y: 80,
-        speedup: Math.random()
-      });
+    //   bikes1.push({
+    //     x: 25,
+    //     y: 80,
+    //     speedup: Math.random()
+    //   });
 
-      bikes2.push({
-        x: 15,
-        y: 80,
-        speedup: Math.random()
-      });
-    }
+    //   bikes2.push({
+    //     x: 15,
+    //     y: 80,
+    //     speedup: Math.random()
+    //   });
+    // }
 
     for (let bee of bees01) {
       indexBee = bees01.indexOf(bee);
@@ -357,7 +357,7 @@ const init = async () => {
           y: 90
         });
       }
-      if (ground.x < -50) {
+      if (ground.x < -10) {
         grounds.splice(indexGround, 1);
       }
     }
@@ -418,30 +418,30 @@ const init = async () => {
       }
     }
 
-    for (let bike of bikes1) {
-      indexBike = bikes1.indexOf(bike);
+    // for (let bike of bikes1) {
+    //   indexBike = bikes1.indexOf(bike);
 
-      batch.draw(bikeImg, bike.x, bike.y, 60, 10);
+    //   batch.draw(bikeImg, bike.x, bike.y, 60, 10);
 
-      if (stop == 0) {
-        bike.x = bike.x - 0.3;
-      }
-      if (bike.x < -200) {
-        bikes1.splice(indexBike, 1);
-      }
-    }
-    for (let bike of bikes2) {
-      indexBike2 = bikes2.indexOf(bike);
+    //   if (stop == 0) {
+    //     bike.x = bike.x - 0.3;
+    //   }
+    //   if (bike.x < -200) {
+    //     bikes1.splice(indexBike, 1);
+    //   }
+    // }
+    // for (let bike of bikes2) {
+    //   indexBike2 = bikes2.indexOf(bike);
 
-      batch.draw(bike2Img, bike.x, bike.y, 60, 10);
+    //   batch.draw(bike2Img, bike.x, bike.y, 60, 10);
 
-      if (stop == 0) {
-        bike.x = bike.x - 0.5;
-      }
-      if (bike.x < -200) {
-        bikes2.splice(indexBike2, 1);
-      }
-    }
+    //   if (stop == 0) {
+    //     bike.x = bike.x - 0.5;
+    //   }
+    //   if (bike.x < -200) {
+    //     bikes2.splice(indexBike2, 1);
+    //   }
+    // }
     accumulateScore += delta;
     for (let pipe of pipes) {
       batch.draw(pipeImg, pipe.x, pipe.y, 10, 100);
