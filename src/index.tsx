@@ -295,72 +295,72 @@ const init = async () => {
     //   });
     // }
 
-    for (let bee of bees01) {
-      indexBee = bees01.indexOf(bee);
-      lastIndexBee01 = bees01.length - 1;
+    // for (let bee of bees01) {
+    //   indexBee = bees01.indexOf(bee);
+    //   lastIndexBee01 = bees01.length - 1;
 
-      if (accumulate > 2 && stop == 0) {
-        accumulate = 0;
+    //   if (accumulate > 2 && stop == 0) {
+    //     accumulate = 0;
 
-        bees01.push({
-          x: 50,
-          y: Math.floor(Math.random() * (50 - 30 + 1)) + 30,
-          powerup: Math.random()
-        });
-      }
-      if (bee.x < -15) {
-        bees01.splice(indexBee, 1);
-      }
-    }
-    for (let bee of bees02) {
-      indexBee2 = bees02.indexOf(bee);
-      lastIndexBee02 = bees02.length - 1;
+    //     bees01.push({
+    //       x: 50,
+    //       y: Math.floor(Math.random() * (50 - 30 + 1)) + 30,
+    //       powerup: Math.random()
+    //     });
+    //   }
+    //   if (bee.x < -15) {
+    //     bees01.splice(indexBee, 1);
+    //   }
+    // }
+    // for (let bee of bees02) {
+    //   indexBee2 = bees02.indexOf(bee);
+    //   lastIndexBee02 = bees02.length - 1;
 
-      if (accumulateBee2 > 2 && stop == 0) {
-        accumulateBee2 = 0;
+    //   if (accumulateBee2 > 2 && stop == 0) {
+    //     accumulateBee2 = 0;
 
-        bees02.push({
-          x: 50,
-          y: Math.floor(Math.random() * (60 - 20 + 1)) + 20,
-          powerup: Math.random()
-        });
-      }
-      if (bee.x < -9) {
-        bees02.splice(indexBee2, 1);
-      }
-    }
-    for (let wire of wires) {
-      indexWire = wires.indexOf(wire);
-      lastIndexWire = wires.length - 1;
+    //     bees02.push({
+    //       x: 50,
+    //       y: Math.floor(Math.random() * (60 - 20 + 1)) + 20,
+    //       powerup: Math.random()
+    //     });
+    //   }
+    //   if (bee.x < -9) {
+    //     bees02.splice(indexBee2, 1);
+    //   }
+    // }
+    // for (let wire of wires) {
+    //   indexWire = wires.indexOf(wire);
+    //   lastIndexWire = wires.length - 1;
 
-      if (accumulate1 > 4 && stop == 0) {
-        accumulate1 = 0;
+    //   if (accumulate1 > 4 && stop == 0) {
+    //     accumulate1 = 0;
 
-        wires.push({
-          x: wires[lastIndexWire].x + 25,
-          y: 65
-        });
-      }
-      if (wire.x < -25) {
-        wires.splice(indexWire, 1);
-      }
-    }
+    //     wires.push({
+    //       x: wires[lastIndexWire].x + 25,
+    //       y: 65
+    //     });
+    //   }
+    //   if (wire.x < -25) {
+    //     wires.splice(indexWire, 1);
+    //   }
+    // }
 
-    for (let ground of grounds) {
-      indexGround = grounds.indexOf(ground);
-      lastIndexGround = grounds.length - 1;
-      if (accuTree > 0.3 && stop == 0) {
-        accuTree = 0;
+    // for (let ground of grounds) {
+    //   indexGround = grounds.indexOf(ground);
+    //   lastIndexGround = grounds.length - 1;
+    //   if (accuTree > 0.3 && stop == 0) {
+    //     accuTree = 0;
 
-        grounds.push({
-          x: grounds[lastIndexGround].x + 10,
-          y: 90
-        });
-      }
-      if (ground.x < -10) {
-        grounds.splice(indexGround, 1);
-      }
-    }
+    //     grounds.push({
+    //       x: grounds[lastIndexGround].x + 10,
+    //       y: 90
+    //     });
+    //   }
+    //   if (ground.x < -10) {
+    //     grounds.splice(indexGround, 1);
+    //   }
+    // }
 
     gl.clear(gl.COLOR_BUFFER_BIT);
     batch.setProjection(camera.combined);
@@ -378,45 +378,45 @@ const init = async () => {
     }
     // console.log(Time_gia_toc);
 
-    for (let wire of wires) {
-      batch.draw(skyImg, wire.x, wire.y - 70, 25, 75);
+    // for (let wire of wires) {
+    //   batch.draw(skyImg, wire.x, wire.y - 70, 25, 75);
 
-      batch.draw(cloud, wire.x, wire.y - 3, 25, 25);
+    //   batch.draw(cloud, wire.x, wire.y - 3, 25, 25);
 
-      batch.draw(house, wire.x, wire.y, 25, 25);
+    //   batch.draw(house, wire.x, wire.y, 25, 25);
 
-      batch.draw(wireImg, wire.x, wire.y, 25, 25);
+    //   batch.draw(wireImg, wire.x, wire.y, 25, 25);
 
-      batch.draw(treeImg, wire.x, wire.y + 15, 25, 10);
+    //   batch.draw(treeImg, wire.x, wire.y + 15, 25, 10);
 
-      if (stop == 0) {
-        wire.x = wire.x - 0.1;
-      }
-    }
+    //   if (stop == 0) {
+    //     wire.x = wire.x - 0.1;
+    //   }
+    // }
 
-    for (let bee of bees01) {
-      batch.draw(bee1Img, bee.x, bee.y, 15, 8.55);
+    // for (let bee of bees01) {
+    //   batch.draw(bee1Img, bee.x, bee.y, 15, 8.55);
 
-      if (bee.powerup < 0.4 && stop == 0) {
-        bee.x = bee.x - 0.2;
-      } else {
-        if (stop == 0) {
-          bee.x = bee.x - 0.5;
-        }
-      }
-    }
+    //   if (bee.powerup < 0.4 && stop == 0) {
+    //     bee.x = bee.x - 0.2;
+    //   } else {
+    //     if (stop == 0) {
+    //       bee.x = bee.x - 0.5;
+    //     }
+    //   }
+    // }
 
-    for (let bee of bees02) {
-      batch.draw(bee2Img, bee.x, bee.y, 9, 7.7);
+    // for (let bee of bees02) {
+    //   batch.draw(bee2Img, bee.x, bee.y, 9, 7.7);
 
-      if (bee.powerup < 0.2 && stop == 0) {
-        bee.x = bee.x - 0.2;
-      } else {
-        if (stop == 0) {
-          bee.x = bee.x - 0.8;
-        }
-      }
-    }
+    //   if (bee.powerup < 0.2 && stop == 0) {
+    //     bee.x = bee.x - 0.2;
+    //   } else {
+    //     if (stop == 0) {
+    //       bee.x = bee.x - 0.8;
+    //     }
+    //   }
+    // }
 
     // for (let bike of bikes1) {
     //   indexBike = bikes1.indexOf(bike);
@@ -506,12 +506,12 @@ const init = async () => {
       }
     }
 
-    for (let ground of grounds) {
-      batch.draw(groundsImg, ground.x, ground.y, 10, 10);
-      if (stop == 0) {
-        ground.x = ground.x - 0.5;
-      }
-    }
+    // for (let ground of grounds) {
+    //   batch.draw(groundsImg, ground.x, ground.y, 10, 10);
+    //   if (stop == 0) {
+    //     ground.x = ground.x - 0.5;
+    //   }
+    // }
     if (stop == 0) {
       roatateTime += delta;
       rotateAngle = rotateAngle + 0.2 * roatateTime;
