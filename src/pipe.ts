@@ -34,7 +34,6 @@ import {
               
               });
         }
-        console.log(array.length)
         for (let pipe of array) {  
             
             if (pipe.X < -10) {

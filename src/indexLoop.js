@@ -1,62 +1,18 @@
 import {
-    createAnimation,
-    createBatch,
-    createGameLoop,
+
     createStage,
     createViewport,
     createViewportAwareInputHandler,
-    createWhiteTexture,
-    loadAtlas,
-    loadTexture,
-    PlayMode,
-    TextureRegion,
-    Vector2
-  } from 'gdxjs';
+} from 'gdxjs';
 
 
 
   const stage = createStage();
 
 const canvas = stage.getCanvas();
-// const ctx = canvas.getContext("2d")
 export const viewport = createViewport(canvas, 50, 100);
 export const gl = viewport.getContext();
 export const inputHandler = createViewportAwareInputHandler(canvas, viewport);
-
-
-// async () =>{
-//     let allImg = {
-//         bee1Img:  await loadTexture(gl, './bee01.png'),
-//         bee2Img: 0,
-//         treeImg:async () =>{ return await loadTexture(gl, './tree.png')},
-//         wireImg:async () =>{ return await loadTexture(gl, './wire.png')},
-//         houseImg:async () =>{ return await loadTexture(gl, './house.png')},
-//         skyImg:async () =>{ return await loadTexture(gl, './sky.jpg')},
-//         groundImg:async () =>{ return await loadTexture(gl, './base.jpg')},
-//         bike1Img:async () =>{ return await loadTexture(gl, './bike.png')},
-//         bike2Img:async () =>{ return await loadTexture(gl, './bike2.png')},
-//         pipeImg:async () =>{ return await loadTexture(gl, './pipe.png')},
-//         pipeDownImg:async () =>{ return await loadTexture(gl, './pipe-down.png')},
-//         cloudImg:async () =>{ return await loadTexture(gl, './cloud.png')},
-//         birdImg:async () =>{ return await loadTexture(gl, './main.png')},
-    
-    
-        
-//     }
-//     showImg =  (index) => { 
-//         for(let img in allImg){
-//             if(img.toString()==index.toString()){
-//                 return allImg[img];
-                
-//         }
-      
-//         };
-    
-//     }
-//     x = showImg()
-// }
-
-
 
 let allIndex = {
     indexBee:0,
@@ -79,9 +35,6 @@ let allIndex = {
 }
 
   
-
-
-
 export let allArray = {
     bees01:[],
     bees02:[],
@@ -191,12 +144,6 @@ export let allArray = {
         y:40
     }
 }
-//  export let pipes = []  
-
-
- 
-  
-let memory;
 export function showIndex(index){ 
     for(let key in allIndex){
         if(key.toString()==index.toString()){

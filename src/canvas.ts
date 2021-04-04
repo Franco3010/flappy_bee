@@ -18,7 +18,7 @@ import {
   const canvas = stage.getCanvas();
   // const ctx = canvas.getContext("2d")
   const viewport = createViewport(canvas, 50, 100);
-  const gl = viewport.getContext();
+  export const gl = viewport.getContext();
   const camera = viewport.getCamera();
 
   

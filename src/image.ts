@@ -1,0 +1,33 @@
+import { loadTexture, Texture } from 'gdxjs';
+import { gl } from './indexLoop';
+export let imgSky: Texture;
+export let groundsImg: Texture;
+export let bee1Img: Texture;
+export let bee2Img: Texture;
+export let pipeImg: Texture;
+export let pipeDownImg: Texture;
+export let signImg: Texture;
+export let treeImg: Texture;
+export let wireImg: Texture;
+export let houseImg: Texture;
+export let cloudImg: Texture;
+export let bikeImg: Texture;
+export let bike2Img: Texture;
+export let birdsImg: Texture;
+
+export let image = async () => {
+  imgSky = await loadTexture(gl, './sky.jpg');
+  groundsImg = await loadTexture(gl, './base.jpg');
+  bee1Img = await loadTexture(gl, './bee01.png');
+  bee2Img = await loadTexture(gl, './bee02.png');
+  pipeImg = await loadTexture(gl, './pipe.png');
+  pipeDownImg = await loadTexture(gl, './pipe-down.png');
+  signImg = await loadTexture(gl, './sign.png');
+  treeImg = await loadTexture(gl, './tree.png');
+  wireImg = await loadTexture(gl, './wire.png');
+  houseImg = await loadTexture(gl, './house.png');
+  cloudImg = await loadTexture(gl, './cloud.png');
+  bikeImg = await loadTexture(gl, './bike.png');
+  bike2Img = await loadTexture(gl, './bike2.png');
+  birdsImg = await loadTexture(gl, './main.png');
+};
