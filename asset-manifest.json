@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/flappy_bee/static/css/main.1bbd781e.chunk.css",
-    "main.js": "/flappy_bee/static/js/main.764ea7de.chunk.js",
-    "main.js.map": "/flappy_bee/static/js/main.764ea7de.chunk.js.map",
+    "main.js": "/flappy_bee/static/js/main.0b35470c.chunk.js",
+    "main.js.map": "/flappy_bee/static/js/main.0b35470c.chunk.js.map",
     "runtime-main.js": "/flappy_bee/static/js/runtime-main.c1f58b5b.js",
     "runtime-main.js.map": "/flappy_bee/static/js/runtime-main.c1f58b5b.js.map",
     "static/js/2.69f7f136.chunk.js": "/flappy_bee/static/js/2.69f7f136.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.c1f58b5b.js",
     "static/js/2.69f7f136.chunk.js",
     "static/css/main.1bbd781e.chunk.css",
-    "static/js/main.764ea7de.chunk.js"
+    "static/js/main.0b35470c.chunk.js"
   ]
 }
