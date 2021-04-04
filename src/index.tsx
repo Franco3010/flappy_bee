@@ -13,6 +13,7 @@ import {
   TextureRegion,
   Vector2
 } from 'gdxjs';
+import { Bee } from './bee';
 import { time } from 'console';
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
