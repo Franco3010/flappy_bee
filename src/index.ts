@@ -4,7 +4,8 @@ import {
   createBatch,
   createGameLoop,
   createWhiteTexture,
-  TextureRegion
+  TextureRegion,
+  loadTexture
 } from 'gdxjs';
 import './bee.ts';
 import { Bee } from './bee';
@@ -21,10 +22,8 @@ import { Pipe } from './pipe';
 import { Ground } from './ground';
 import { Bike } from './bike';
 import { Bird } from './bird';
-import * as image from './image';
 
 const init = async () => {
-  image.image();
   const camera = viewport.getCamera();
   const batch = createBatch(gl);
   const whiteTex = createWhiteTexture(gl);
@@ -35,11 +34,27 @@ const init = async () => {
   let bike = new Bike();
   let birdObj = new Bird();
 
-  const birdImg = TextureRegion.splitTexture(image.birdsImg, 3, 1);
+let birdsImg = await loadTexture(gl, './main.png');
+let imgSky = await loadTexture(gl, './sky.jpg');
+  let groundsImg = await loadTexture(gl, './base.jpg');
+  let bee1Img = await loadTexture(gl, './bee01.png');
+  let bee2Img = await loadTexture(gl, './bee02.png');
+  let pipeImg = await loadTexture(gl, './pipe.png');
+  let pipeDownImg = await loadTexture(gl, './pipe-down.png');
+  let signImg = await loadTexture(gl, './sign.png');
+  let treeImg = await loadTexture(gl, './tree.png');
+  let wireImg = await loadTexture(gl, './wire.png');
+  let houseImg = await loadTexture(gl, './house.png');
+  let cloudImg = await loadTexture(gl, './cloud.png');
+  let bikeImg = await loadTexture(gl, './bike.png');
+  let bike2Img = await loadTexture(gl, './bike2.png');
+
+  const birdImg = TextureRegion.splitTexture(birdsImg, 3, 1);
 
   const runAnimation = createAnimation(0.1, birdImg);
 
   const runAnimation1 = createAnimation(50, birdImg);
+  console.log("hello")
 
   gl.clearColor(0, 0, 0, 1);
   createGameLoop(delta => {
@@ -110,24 +125,24 @@ const init = async () => {
 
     gl.clear(gl.COLOR_BUFFER_BIT);
     batch.setProjection(camera.combined);
-    bee.begin(batch);
+    batch.begin();
     batch.draw(whiteTex, 0, 0, 50, 100);
 
-    wire.drawWire(image.imgSky, batch, showArray('skys'), 25, 75);
-    wire.drawWire(image.cloudImg, batch, showArray('clouds'), 25, 25);
-    wire.drawWire(image.houseImg, batch, showArray('houses'), 25, 25);
-    wire.drawWire(image.wireImg, batch, showArray('wires'), 25, 25);
+    wire.drawWire(imgSky, batch, showArray('skys'), 25, 75);
+    wire.drawWire(cloudImg, batch, showArray('clouds'), 25, 25);
+    wire.drawWire(houseImg, batch, showArray('houses'), 25, 25);
+    wire.drawWire(wireImg, batch, showArray('wires'), 25, 25);
 
     bee.drawBee(
-      image.bee1Img,
+      bee1Img,
       batch,
       showArray('bees01'),
       showIndex('indexBee'),
       15,
-      8.55
+      7.5
     );
     bee.drawBee(
-      image.bee2Img,
+      bee2Img,
       batch,
       showArray('bees02'),
       showIndex('indexBee2'),
@@ -135,10 +150,10 @@ const init = async () => {
       7.7
     );
 
-    wire.drawWire(image.treeImg, batch, showArray('trees'), 25, 15);
+    wire.drawWire(treeImg, batch, showArray('trees'), 25, 15);
 
     bike.drawBike(
-      image.bikeImg,
+      bikeImg,
       batch,
       showArray('bikes01'),
       showIndex('indexBike1'),
@@ -147,7 +162,7 @@ const init = async () => {
       0.3
     );
     bike.drawBike(
-      image.bike2Img,
+      bike2Img,
       batch,
       showArray('bikes02'),
       showIndex('indexBike2'),
@@ -156,15 +171,14 @@ const init = async () => {
       0.5
     );
     pipe.drawPipe(
-      image.pipeImg,
-      image.signImg,
-      image.pipeDownImg,
+      pipeImg,
+      signImg,
+      pipeDownImg,
       showArray('bird'),
       batch,
       showArray('pipes')
     );
-    ground.drawGround(image.groundsImg, batch, showArray('grounds'));
-
+    ground.drawGround(groundsImg, batch, showArray('grounds'));
     birdObj.rotateRender(
       delta,
       runAnimation,
@@ -179,7 +193,7 @@ const init = async () => {
 
     batch.setColor(1, 1, 1, 1);
 
-    bee.end(batch);
+    batch.end();
   });
 };
 
