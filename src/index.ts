@@ -67,6 +67,11 @@ let imgSky = await loadTexture(gl, './sky.jpg');
     );
     resetStop(inputHandler);
 
+    
+//     moi class wire, bee,... co function 
+//    1.tao ra 1 mang rong chua cac phan tu
+//    2. add các phân tử vào mảng theo thời gian
+//    3. xóa các phần tử khi không cân đến
     wire.pushWire(
       delta,
       showIndex('LastIndexSky'),
